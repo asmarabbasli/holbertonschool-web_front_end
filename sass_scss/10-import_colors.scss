@@ -1,4 +1,13 @@
-/* All my colors */
-$red:#ff0000;
-$green:#00ff00;
-$blue:#0000ff;
+/* Task10 */
+@import url('10-colors.scss');
+
+
+.red {
+    color: $red;
+}
+.green{
+    color: $green;
+}
+.blue{
+    color: $blue;
+}
