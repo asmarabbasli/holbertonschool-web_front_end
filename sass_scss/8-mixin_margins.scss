@@ -1,0 +1,13 @@
+/* task 8 */
+@mixin set_margin($left,$right) {
+    margin-left: $left;
+    margin-right: $right;
+}
+
+body {
+    @include set_margin(10px,10px)
+}
+
+div {
+    @include set_margin(15px,15px)
+}
