@@ -249,6 +249,12 @@
     background-color: var(--color-primary);
     width: 100%;
   }
+  /* digər stil qaydalarının sonunda */
+
+  .nav .nav-item + .nav-item {
+  margin-left: 10px;
+  }
+
   
   /* Header
       ============================= */
