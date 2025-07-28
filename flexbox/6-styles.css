@@ -212,7 +212,10 @@
     list-style: none;
     text-align: center;
     display: flex;
-    
+    nav .nav-item + .nav-item {
+    margin: var(--nav-item-margin);
+}
+
   }
   
   .nav .nav-item {
@@ -222,9 +225,6 @@
     letter-spacing: var(--nav-item-letter-spacing);
 
   }
-  nav .nav-item + .nav-item {
-  margin: var(--nav-item-margin);
-}
 
   .nav .nav-link {
     display: block;
