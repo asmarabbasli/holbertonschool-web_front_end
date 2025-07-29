@@ -405,7 +405,7 @@
 .hero-article {
   background-size: 150rem 100rem;
   background-position: 50% 0;
-}
+ }
 .hero-article::before {
   content: '';
   background: rgba(0, 0, 0, 0.8);
@@ -415,12 +415,12 @@
   left: 0;
   bottom: 0;
   z-index: 0;
-}
+ }
 .hero-article .section-inner {
   text-align: center;
   align-items: center;
   min-height: 40vh;
-}
+ }
   /*** 4. CARD ***/
   
   /* Card (all styles)
