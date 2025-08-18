@@ -691,10 +691,8 @@ ul.row {
     display: block;
     padding: 2rem 1rem 0 1rem;
     opacity: 0;
-    transition: opacity 0.3s ease;
   }
-  .card-work .card-title a:focus,
-  .card-work:hover .card-title a {
+  .card-work .card-title a:focus{
     opacity: 1;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
