@@ -691,6 +691,7 @@ ul.row {
     display: block;
     padding: 2rem 1rem 0 1rem;
     opacity: 0;
+    height: 100%;
   }
   .card-work .card-title a:focus{
     opacity: 1;
