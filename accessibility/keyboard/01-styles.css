@@ -696,7 +696,11 @@ ul.row {
     opacity: 1;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    outline: none; 
+  }
+  .card-work:hover .card-title a{
+    opacity: 1;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
   }
 
   .card-work:hover .card-image {
