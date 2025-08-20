@@ -189,6 +189,31 @@ a:active {
   clip: rect(1px, 1px, 1px, 1px);
   white-space: nowrap;
 }
+.off-screen{
+  position: absolute;
+  left: -100vw;
+}
+.skip-link{
+  background: var(--color-black);
+  color: var(--color-white);
+  left: 0;
+  padding: .7rem;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  z-index: 10;
+  transform: translateY(-1rem);
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+:root {
+  --color-black: #000;
+  --color-white: #fff;
+}
+.skip-link:focus {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 /*** 2. LAYOUT ***/
 
