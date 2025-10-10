@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Task 1</title>
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      function createTextElement() {
+        const paragraphText = "Sed in diam risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in diam risus. Lorem ipsum dolor sit amet. Aenean tempus ex est vel volutpat. Suspendisse nec est vitae. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin auctor sollicitudin eleifend. Vivamus porta enim vitae iaculis commodo. Vivamus tempus tellus elementum. Quisque sed pellentesque nulla, at tincidunt arcu. Phasellus eget tincidunt ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+        const $paragraph = $('<p>').text(paragraphText);
+        $('body').append($paragraph);
+      }
+
+      createTextElement();
+    </script>
+  </body>
+</html>
