@@ -2,8 +2,8 @@ function welcome(firstName, lastName){
   const fullName = '' + firstName + '' + lastName;
 
   function displayFullName(){
-    alert('Welcome'+ fullName+ '!')
+    alert(fullName,'Holberton')
   }
   displayFullName();
 }
-welcome('Holberton', 'School');
+welcome('Welcome','Holberton')

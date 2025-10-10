@@ -11,4 +11,4 @@ function logWelcomeUser(welcomeString) {
   console.log(`${welcomeString}, ${user.firstName}. Your occupation is: ${user.occupation}`);
 }
 const bindLogWelcomeUser = logWelcomeUser.bind(user);
-bindLogWelcomeUser("Hello");
+bindLogWelcomeUser('Hello');
