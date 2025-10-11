@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Task 11</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      function addPostRow(data) {
+        const paragraph = $('<p>').append(
+          $('<span>').text(`Post created with id ${data.id}, title: ${data.title}, author: ${data.author}`)
+        );
+        $('body').append(paragraph);
+      }
+
+      function listPosts() {
+        $.get('http://localhost:3000/posts')
+          .done(function (response) {
+            response.forEach(post => {
+              addPostRow(post);
+            });
+          })
+          .fail(function () {
+            alert('Server Error');
+          });
+      }
+
+      function sendForm(e) {
+        e.preventDefault();
+        $('form').after($('<p>').text('About to send the query to the API'));
+
+        const author = $('#author').val();
+        const title = $('#title').val();
+
+        $.post('https://jsonplaceholder.typicode.com/posts', {
+          title: title,
+          author: author
+        })
+        .done(function (data) {
+          addPostRow(data);
+        })
+        .fail(function () {
+          $('form').after($('<p>').text('Error sending the POST query'));
+        });
+      }
+
+      function buildForm() {
+        const form = $('<form>');
+        
+        const divAuthor = $('<div>');
+        const labelAuthor = $('<label>').attr('for', 'author').text('Author');
+        const inputAuthor = $('<input>').attr('type', 'text').attr('id', 'author');
+        labelAuthor.click(() => inputAuthor.select());
+        divAuthor.append(labelAuthor, inputAuthor);
+
+        const divTitle = $('<div>');
+        const labelTitle = $('<label>').attr('for', 'title').text('Title');
+        const textareaTitle = $('<textarea>').attr('id', 'title');
+        labelTitle.click(() => textareaTitle.select());
+        divTitle.append(labelTitle, textareaTitle);
+
+        const submitBtn = $('<input>').attr('type', 'submit').val('Submit');
+
+        form.append(divAuthor, divTitle, submitBtn);
+        form.submit(sendForm);
+
+        $('body').append(form);
+      }
+
+      $(document).ready(function () {
+        listPosts();
+        buildForm();
+      });
+    </script>
+  </body>
+</html>
