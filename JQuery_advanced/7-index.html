@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Task 7</title>
+    <script type="application/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+      #results {
+        margin-top: 20px;
+        list-style: none;
+        padding: 0;
+      }
+      article {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="results"></ul>
+
+    <script type="application/javascript">
+      function createSearchForm() {
+        const form = $('<form>');
+        const inputText = $('<input>').attr('type', 'text').attr('placeholder', 'Search Wikipedia');
+        const inputSubmit = $('<input>').attr('type', 'submit').val('Search');
+
+        form.append(inputText, inputSubmit);
+
+        form.submit(function (e) {
+          e.preventDefault();
+          const query = inputText.val();
+          queryWikipedia(query);
+        });
+
+        return form;
+      }
+
+      function addSearchForm() {
+        $('body').prepend(createSearchForm());
+      }
+
+      function createSearchArticle(id, title, snippet) {
+        const article = $('<article>');
+        const p1 = $('<p>').append(
+          $('<span>').text('id: '),
+          $('<b>').text(id)
+        );
+        const p2 = $('<p>').html(`<strong>${title}</strong>: ${snippet}`);
+        article.append(p1, p2);
+        $('#results').append($('<li>').append(article));
+      }
+
+      function addArticle(data) {
+        $('#results').empty(); // Clear previous results
+        const results = data.query.search;
+        results.forEach(result => {
+          createSearchArticle(result.pageid, result.title, result.snippet);
+        });
+      }
+
+      function queryWikipedia(search) {
+        const data = {
+          action: 'query',
+          list: 'search',
+          srsearch: search,
+          format: 'json',
+          origin: '*'
+        };
+
+        $.ajax({
+          url: 'https://en.wikipedia.org/w/api.php',
+          data: data,
+          dataType: 'json',
+          success: function (response) {
+            addArticle(response);
+          }
+        });
+      }
+
+      addSearchForm();
+    </script>
+  </body>
+</html>
