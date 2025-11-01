@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Session Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px;
+      margin: 5px;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    p {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Available Items</h2>
+  <div id="store"></div>
+  <div id="cart-message"></div>
+
+  <script>
+    const availableItems = ['Shampoo', 'Soap', 'Sponge', 'Water'];
+
+    if (typeof(Storage) === "undefined") {
+      alert("Sorry, your browser does not support Web storage. Try again with a better one");
+    } else {
+      createStore();
+      displayCart();
+    }
+
+    function addItemToCart(item) {
+      let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+      cart.push(item);
+      sessionStorage.setItem('cart', JSON.stringify(cart));
+      createStore();
+      displayCart();
+    }
+
+    function createStore() {
+      const storeDiv = document.getElementById('store');
+      storeDiv.innerHTML = ''; // Clear previous content
+
+      const ul = document.createElement('ul');
+      availableItems.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        li.onclick = () => addItemToCart(item);
+        ul.appendChild(li);
+        sessionStorage.setItem(item, true);
+      });
+
+      storeDiv.appendChild(ul);
+    }
+
+    function displayCart() {
+      const cartMessage = document.getElementById('cart-message');
+      const cart = JSON.parse(sessionStorage.getItem('cart'));
+
+      if (cart && cart.length > 0) {
+        cartMessage.textContent = `You previously had ${cart.length} items in your cart`;
+      } else {
+        cartMessage.textContent = '';
+      }
+    }
+  </script>
+</body>
+</html>
